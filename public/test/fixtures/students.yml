@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  accepted_on: 2015-01-28
+  favorite_flavor: MyString
+
+two:
+  name: MyString
+  accepted_on: 2015-01-28
+  favorite_flavor: MyString

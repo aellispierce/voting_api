@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Bill
+  party: MyString
+  id: 1
+
+two:
+  name: MyString
+  party: MyString
