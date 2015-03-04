@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   private
 
   def restrict_access
-    api_key = ApiKey.find_by_access_token(params[:access_token])
-    head :unauthorized unless api_key
+    voter = Voter.find_by_access_token(params[:access_token])
+    head :unauthorized unless voter
   end
 end

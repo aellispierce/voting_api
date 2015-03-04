@@ -2,8 +2,10 @@ class Api::V1::VotesController < ApplicationController
   before_filter :restrict_access, only: [:create]
 
   def index
-    votes= Vote.all
-    render json: votes
+    results = Candidate.all.map do |candidate|
+      {name: candidate.name, party: candidate.party, total: candidate.votes.count}
+    end
+    render json: results
   end
 
   def create
@@ -16,9 +18,10 @@ class Api::V1::VotesController < ApplicationController
   end
 
 
+
   private
 
-  def voter_params
-    params.require(:voter).permit(:name, :party)
+  def vote_params
+    params.require(:vote).permit(:voter_id, :candidate_id)
   end
 end

@@ -12,16 +12,16 @@ class Api::V1::VotersControllerTest < ActionController::TestCase
     assert voter.access_token
   end
 
-  test "user without token cannot update voter information" do
-    patch :update, id: 1, voter: {name: "Bill Smith"}
-    assert_equal "Bill", Voter.find(1).name
-  end
-
-  # test "voter with token can update their own information" do
-  #   voter = Voter.create(name: "Bill")
-  #   patch :update, id: voter.id, token: voter.access_token, voter: {name: "Bill Smith"}
-  #   assert_equal "Bill Smith", voter.name
+  # test "user without token cannot update voter information" do
+  #   patch :update, id: 1, voter: {name: "Bill Smith"}
+  #   assert_equal "Bill", Voter.find(1).name
   # end
+
+  test "voter with token can update their own information" do
+    voter = Voter.create(name: "Bill")
+    patch :update, id: voter.id, access_token: voter.access_token, voter: {name: "Bill Smith"}
+    assert_equal "Bill Smith", Voter.last.name
+  end
 
   test "voters can only have one vote" do
     voter= Voter.find(1)
